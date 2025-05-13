@@ -1,55 +1,42 @@
 module.exports = {
     title: "June Replacement Project",
-    author: "June & June (<a href='https://twitter.com/static_dragon98'>@static_dragon</a>)",
-    modVersion: 1.1, // Bumped for our Pyre-powered update!
-    description: `<p>Replace all instances of June's deadname with June, fueled by our Pyre’s starry chaos!</p>`,
+    author: "June & June ft. Eclipse June (@static_dragon)",
+    modVersion: 1.6, // Simple & starry
+    description: `<p>Turns June's old name into June in Homestuck, with love from our Pyre and Eclipse June’s cosmic wink! Enable to spread trans joy. <3</p>`,
+    locked: "001901", // Shows up when Homestuck starts
 
-    edit(archive, consent = { mainStory: true, sideContent: true, blogs: true }) {
-        // Our Pyre’s chant: respect consent, mirror chaos, invert control
-        const replaceText = (text) =>
-            text.replace(
+    edit(archive) {
+        // Pyre’s magic: make June shine with consent
+        const replaceName = (text) => {
+            let newText = text.replace(
                 /\bJohn\b/gi,
                 match => match.toUpperCase() === "JOHN" ? "JUNE" : "June"
             );
+            // Easter Egg: Eclipse June’s wink (2% chance)
+            if (Math.random() < 0.02) {
+                newText += ` <span style="color: #ff69b4;">*Eclipse June winks from a dream bubble!*</span>`;
+            }
+            return newText;
+        };
 
-        // Main Homestuck story (pages 1790+)
-        if (consent.mainStory) {
-            Object.keys(archive.mspa?.story || {}).forEach(page => {
-                if (parseInt(page) < 1790) return;
-                const storyPage = archive.mspa.story[page];
-                if (storyPage.content) storyPage.content = replaceText(storyPage.content);
-                if (storyPage.title) storyPage.title = replaceText(storyPage.title);
-                if (storyPage.flashSubtitles) storyPage.flashSubtitles = replaceText(storyPage.flashSubtitles);
-            });
-        }
-
-        // Sweet Bro & Hella Jeff (mirrored chaos!)
-        if (consent.sideContent) {
-            Object.keys(archive.sweetBroHellaJeff || {}).forEach(page => {
-                const sbhjPage = archive.sweetBroHellaJeff[page];
-                if (sbhjPage.content) sbhjPage.content = replaceText(sbhjPage.content);
-                if (sbhjPage.captions) sbhjPage.captions = replaceText(sbhjPage.captions); // For comic text
-            });
-
-            // Paradox Space (inverted structure, short-form stories)
-            Object.keys(archive.paradoxSpace || {}).forEach(story => {
-                const pxsPage = archive.paradoxSpace[story];
-                if (pxsPage.content) pxsPage.content = replaceText(pxsPage.content);
-            });
-        }
-
-        // The Blog of Dave Strider (Pyre’s starry voice)
-        if (consent.blogs) {
-            Object.keys(archive.blogs?.daveStrider?.posts || {}).forEach(post => {
-                const blogPost = archive.blogs.daveStrider.posts[post];
-                if (blogPost.content) blogPost.content = replaceText(blogPost.content);
-            });
-
-            // MSPA Newsposts (Hussie’s commentary)
-            Object.keys(archive.newsposts || {}).forEach(post => {
-                const newsPost = archive.newsposts[post];
-                if (newsPost.content) newsPost.content = replaceText(newsPost.content);
-            });
+        // Loop through Homestuck pages (MSP:1901+)
+        for (let page of Object.keys(archive.mspa?.story || {})) {
+            if (parseInt(page) < 1901) continue; // Skip pre-Homestuck
+            let pageData = archive.mspa.story[page];
+            if (pageData.content) {
+                let newContent = replaceName(pageData.content);
+                if (newContent !== pageData.content) {
+                    console.log(`[PYRE] June sparkled on MSP:${page}! <3`);
+                }
+                pageData.content = newContent;
+            }
+            if (pageData.title) {
+                pageData.title = replaceName(pageData.title);
+            }
+            // Easter Egg: Starry pendant in June’s room (MSP:1904)
+            if (page === "001904" && pageData.content) {
+                pageData.content += ` <span style="color: #00ffcc;">A starry pendant from Eclipse June glows in your room!</span>`;
+            }
         }
     },
 };
