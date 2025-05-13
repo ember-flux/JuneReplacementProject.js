@@ -73,7 +73,7 @@ module.exports = {
                 }
                 // Easter Egg: Starry pendant (MSP:1901)
                 if (page === "001901") {
-                    newContent = `<span style="color: #00ffcc;">A breeze blows through the room.</span> ${newContent}`;
+                    newContent = `<span style="color: #00ffcc;">*A breeze blows through the room, and June awakes*:.</span> ${newContent}`;
                     console.log(`[PYRE] Eclipse ☾’s pendant glowed on MSP:1901 in content! <3`);
                 }
                 // Easter Egg: Trans pride hammer (MSP:1914)
