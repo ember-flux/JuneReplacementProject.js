@@ -1,8 +1,8 @@
 module.exports = {
     title: "The Toblerone Project",
-    author: "June & June ft. Eclipse ☾ (@static_dragon)",
+    author: "June & June ft. Eclipse, with credit to (@static_dragon)",
     modVersion: 2.1, // June-specific misgendering fix
-    description: `<p>Birthed from magical tobleronic author powers, this mod enacts a radical act of gender affirmation that redefines gender, and the reader character, forever, celebrating transfeminine joy! Powered by our Pyre’s starry chaos, Eclipse ☾’s midnight magic (she/it, age 23 transfem plural system), and a Sburb session’s cosmic connection. Enable to join the trans joy revolution against transmisogyny! <3</p>`,
+    description: `<p>Birthed from a wish, an egg hatches. Enacts a radical act of gender affirmation celebrating transfeminine joy! Powered by our Pyre’s chaos, Eclipse ☾’s midnight magic (she/it, age 23 transfem plural system), and a Sburb session’s cosmic connection. Enable to join the trans joy revolution against transmisogyny! <3</p>`,
     locked: "001901", // Hide until Homestuck starts
 
     edit(archive) {
