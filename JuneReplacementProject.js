@@ -1,12 +1,12 @@
 module.exports = {
-    title: "June Replacement Project",
+    title: "The June Project",
     author: "June & June ft. Eclipse June (@static_dragon)",
     modVersion: 1.6, // Simple & starry
-    description: `<p>Turns June's old name into June in Homestuck, with love from our Pyre and Eclipse June’s cosmic wink! Enable to spread trans joy. <3</p>`,
+    description: `<p>Birthed from magical tobleronic retcon powers, this mod enacts a radical act of time travel that redefines gender, and the reader character, forever. with love from our Pyre and Eclipse June’s cosmic wink! Enable to spread trans joy. <3</p>`,
     locked: "001901", // Shows up when Homestuck starts
 
     edit(archive) {
-        // Pyre’s magic: make June shine with consent
+        // Pyre’s magic: make June shine with consent, a transition.
         const replaceName = (text) => {
             let newText = text.replace(
                 /\bJohn\b/gi,
@@ -14,7 +14,7 @@ module.exports = {
             );
             // Easter Egg: Eclipse June’s wink (2% chance)
             if (Math.random() < 0.02) {
-                newText += ` <span style="color: #ff69b4;">*Eclipse June winks from a dream bubble!*</span>`;
+                newText += ` <span style="color: #ff69b4;">*June winks from a dream bubble!*</span>`;
             }
             return newText;
         };
@@ -35,7 +35,7 @@ module.exports = {
             }
             // Easter Egg: Starry pendant in June’s room (MSP:1904)
             if (page === "001904" && pageData.content) {
-                pageData.content += ` <span style="color: #00ffcc;">A starry pendant from Eclipse June glows in your room!</span>`;
+                pageData.content += ` <span style="color: #00ffcc;">Something is different, you can tell.!</span>`;
             }
         }
     },
